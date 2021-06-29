@@ -7,13 +7,6 @@ const add = document.getElementById("add");
 
 button.addEventListener("click", addExpense);
 
-// delete button
-const td = document.createElement("td");
-const checkbutton = document.createElement("button");
-checkbutton.className = "fas fa-times-circle delete";
-td.appendChild(checkbutton);
-add.appendChild(td);
-
 let expense = [];
 
 function addExpense() {
@@ -22,41 +15,46 @@ function addExpense() {
     name: item.value,
     date: date.value,
     amount: "$" + amount.value,
-    checkbutton: checkbutton,
   };
-
   expense.push(oneExpense);
 
   var html = "<tbody>";
   for (var i = 0; i < expense.length; i++) {
-    html += "<tr>";
-    html += "<td>" + expense[i].type + "</td>";
-    html += "<td>" + expense[i].name + "</td>";
-    html += "<td>" + expense[i].date + "</td>";
-    html += "<td>" + expense[i].amount + "</td>";
-    html += "<td>" + expense[i].checkbutton + "</td>";
-    html += "</tr>";
+    const row = `
+      <tr>
+        <td>${expense[i].type}</td>
+        <td>${expense[i].name}</td>
+        <td>${expense[i].date}</td>
+        <td>${expense[i].amount}</td>
+        <button id='delete'>Delete</button>
+      </tr>
+    `;
+
+    html += row;
+
+    // html += "<tr>";
+    // html += "<td>" + expense[i].type + "</td>";
+    // html += `<td>${expense[i].type}</td>`;
+    // html += "<td>" + expense[i].name + "</td>";
+    // html += "<td>" + expense[i].date + "</td>";
+    // html += "<td>" + expense[i].amount + "</td>";
+    // add.appendChild(deleteButton);
+    // html += "</tr>";
   }
+
   html += "</tbody>";
-  document.getElementById("add").innerHTML = html;
+  document.getElementById("add").textContent = html;
   type.value = "";
   item.value = "";
   date.value = "";
   amount.value = "";
 
   // delete
-  add.addEventListener("click", function (e) {
-    if (e.target.classList.contains("delete")) {
-      e.target.expense.remove();
-    }
-  });
 }
 
-// let type_icon;
-// if (type == "card") {
-//   type_icon = "<i class='far fa-credit-card'></i>";
-// } else if (type == "cash") {
-//   type_icon = "<i class='fas fa-money-bill-wave>'</i>";
-// } else if (type == "cryptocoin") {
-//   type_icon = "<i class= 'ab fa-bitcoin' ></i>";
-// }
+function deleteRow(e) {
+  let deleteButton = e.parentNode.parentNode.rowIndex;
+  if (e.target.html.contains("delete")) {
+    e.target.parentElement.remove();
+  }
+}
