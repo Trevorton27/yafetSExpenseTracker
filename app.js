@@ -7,6 +7,10 @@ const add = document.getElementById("add");
 
 button.addEventListener("click", addExpense);
 
+let date = new Date();
+const options = { weekday: "long", month: "long", day: "numeric" };
+date.toLocaleString("en-US", options);
+
 let expense = [];
 
 function addExpense() {
@@ -31,15 +35,6 @@ function addExpense() {
     `;
 
     html += row;
-
-    // html += "<tr>";
-    // html += "<td>" + expense[i].type + "</td>";
-    // html += `<td>${expense[i].type}</td>`;
-    // html += "<td>" + expense[i].name + "</td>";
-    // html += "<td>" + expense[i].date + "</td>";
-    // html += "<td>" + expense[i].amount + "</td>";
-    // add.appendChild(deleteButton);
-    // html += "</tr>";
   }
 
   html += "</tbody>";
@@ -48,13 +43,15 @@ function addExpense() {
   item.value = "";
   date.value = "";
   amount.value = "";
-
-  // delete
 }
 
-function deleteRow(e) {
-  let deleteButton = e.parentNode.parentNode.rowIndex;
-  if (e.target.html.contains("delete")) {
-    e.target.parentElement.remove();
-  }
-}
+document.getElementById("delete").addEventListener("click", () => {
+  document.getElementById("add").removeChild(row);
+});
+
+// function deleteRow(e) {
+//   let deleteButton = e.parentNode.parentNode.rowIndex;
+//   if (e.target.html.contains("delete")) {
+//     e.target.parentElement.remove();
+//   }
+// }
