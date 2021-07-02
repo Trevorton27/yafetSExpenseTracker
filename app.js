@@ -6,12 +6,7 @@ const button = document.getElementById("button");
 const add = document.getElementById("add");
 
 button.addEventListener("click", addExpense);
-
-let date = new Date();
-const options = { weekday: "long", month: "long", day: "numeric" };
-date.toLocaleString("en-US", options);
-
-let expense = [];
+add.addEventListener("click", deleteButton);
 
 function addExpense() {
   const oneExpense = {
@@ -20,35 +15,29 @@ function addExpense() {
     date: date.value,
     amount: "$" + amount.value,
   };
-  expense.push(oneExpense);
 
-  var html = "<tbody>";
-  for (var i = 0; i < expense.length; i++) {
-    const row = `
+  const row = `
       <tr>
-        <td>${expense[i].type}</td>
-        <td>${expense[i].name}</td>
-        <td>${expense[i].date}</td>
-        <td>${expense[i].amount}</td>
+        <td>${oneExpense.type}</td>
+        <td>${oneExpense.name}</td>
+        <td>${oneExpense.date}</td>
+        <td>${oneExpense.amount}</td>
+        <td> 
         <button id='delete'>Delete</button>
+        </td>
       </tr>
     `;
 
-    html += row;
-  }
-
-  html += "</tbody>";
-  document.getElementById("add").textContent = html;
+  document.getElementById("add").innerHTML += row;
   type.value = "";
   item.value = "";
   date.value = "";
   amount.value = "";
 }
 
-document.getElementById("delete").addEventListener("click", () => {
-  document.getElementById("add").removeChild(row);
-});
-
+function deleteButton(e) {
+  if (e.target.id === "delete") e.target.parentElement.parentElement.remove();
+}
 // function deleteRow(e) {
 //   let deleteButton = e.parentNode.parentNode.rowIndex;
 //   if (e.target.html.contains("delete")) {
