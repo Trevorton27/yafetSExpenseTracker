@@ -40,6 +40,14 @@ h3 {
   margin-left: 25px;
 }
 
+#location {
+  font-size: 1.2em;
+  border: transparent;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 25px;
+}
+
 #date {
   font-size: 1.2em;
   border: transparent;

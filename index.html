@@ -31,12 +31,22 @@
         <label for="text" class="label">Name: </label>
         <input type="text" id="name" placeholder="What did you spend on?" />
       </div>
+
       <div class="list2">
         <label for="text" class="label">Date: </label>
         <input type="date" id="date" placeholder="" />
         <label for="text" class="label">Amount: </label>
         <input type="number" id="amount" placeholder="How much?" />
       </div>
+      <div>
+        <label for="text" class="label">Location: </label>
+        <input
+          type="text"
+          id="location"
+          placeholder="Please add your location?"
+        />
+      </div>
+
       <button id="button">Add a new Expense</button>
     </div>
     <table class="added">
@@ -45,6 +55,7 @@
         <th>Name</th>
         <th>Date</th>
         <th>Amount</th>
+        <th>location</th>
       </tr>
       <tbody id="add"></tbody>
     </table>
