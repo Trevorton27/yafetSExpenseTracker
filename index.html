@@ -19,36 +19,36 @@
   <body>
     <h1>Simple Expense manager Project</h1>
     <h3>Add a new item</h3>
-    <div class="main">
+    <form id="main">
       <div class="list1">
         <label for="text" class="label">Type: </label>
-        <select type="text" id="type">
+        <select  id="type" name='type'>
           <option value="card">Card</option>
           <option value="cash">Cash</option>
           <option value="cryptocoin">Cryptocoin</option>
           <option value="Other">Other</option>
         </select>
         <label for="text" class="label">Name: </label>
-        <input type="text" id="name" placeholder="What did you spend on?" />
+        <input type="text" id="name" placeholder="What did you spend on?" required/>
       </div>
 
       <div class="list2">
         <label for="text" class="label">Date: </label>
-        <input type="date" id="date" placeholder="" />
+        <input type="date" id="date" placeholder="" required />
         <label for="text" class="label">Amount: </label>
-        <input type="number" id="amount" placeholder="How much?" />
+        <input type="number" id="amount" placeholder="How much?" required />
       </div>
       <div>
         <label for="text" class="label">Location: </label>
         <input
           type="text"
           id="location"
-          placeholder="Please add your location?"
+          placeholder="Please add your location?" required
         />
       </div>
 
       <button id="button">Add a new Expense</button>
-    </div>
+    </form>
     <table class="added">
       <tr>
         <th>Type</th>
